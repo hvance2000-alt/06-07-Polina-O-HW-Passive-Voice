@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Health & Body · B1 vocabulary gap‑fill</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', system-ui, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 1.5rem;
+    }
+    .container {
+      max-width: 850px;
+      width: 100%;
+      background: #ffffff;
+      backdrop-filter: blur(2px);
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(8px);
+      border-radius: 2.5rem;
+      box-shadow: 0 25px 45px rgba(0,20,40,0.15);
+      padding: 2.5rem 2.2rem;
+      border: 1px solid rgba(255,255,255,0.5);
+    }
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 600;
+      color: #0b3b5c;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      letter-spacing: -0.3px;
+    }
+    h1 span {
+      background: #c9e4f7;
+      padding: 0.2rem 1rem;
+      border-radius: 2rem;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #05516b;
+      margin-left: 0.5rem;
+    }
+    .subtitle {
+      color: #2c3e50;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      border-left: 4px solid #3498db;
+      padding-left: 1rem;
+      background: #eef6fc;
+      border-radius: 0 12px 12px 0;
+      line-height: 1.5;
+    }
+    .exercise-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      margin: 2rem 0 2.2rem;
+    }
+    .sentence-card {
+      background: #f8fafd;
+      border-radius: 1.2rem;
+      padding: 1rem 1.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem 0.8rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+      border: 1px solid #e9f0f5;
+      transition: 0.2s ease;
+      font-size: 1.05rem;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+    .sentence-card:hover {
+      border-color: #b6d6f0;
+      background: #ffffff;
+      box-shadow: 0 8px 18px rgba(0,105,165,0.08);
+    }
+    .sentence-text {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.3rem;
+    }
+    .blank-select {
+      display: inline-block;
+      min-width: 160px;
+      background: white;
+      border: 2px dashed #9bb7d4;
+      border-radius: 2rem;
+      padding: 0.25rem 0.4rem;
+      transition: 0.2s;
+    }
+    select {
+      border: none;
+      background: transparent;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #0b3b5c;
+      padding: 0.3rem 1.8rem 0.3rem 0.8rem;
+      width: 100%;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%233498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.5rem center;
+      background-size: 1.2rem;
+    }
+    select.correct {
+      background-color: #e0f7e9;
+      border-radius: 2rem;
+      color: #0e5e3e;
+      font-weight: 600;
+      border: 2px solid #2b7a4b;
+    }
+    select.incorrect {
+      background-color: #ffe6e6;
+      border-radius: 2rem;
+      color: #a12b2b;
+      font-weight: 600;
+      border: 2px solid #c44545;
+    }
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.8rem 0 1rem;
+    }
+    .btn {
+      background: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 3rem;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.05);
+      border: 1px solid #dce7f2;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #f9fcff;
+      color: #1e3b5c;
+    }
+    .btn-primary {
+      background: #0f4c6b;
+      color: white;
+      border: none;
+      box-shadow: 0 8px 18px rgba(15,76,107,0.3);
+      border: 1px solid #0a3d56;
+    }
+    .btn-primary:hover {
+      background: #0c3f57;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 22px rgba(0,0,0,0.08);
+    }
+    .btn-reset {
+      background: #f1f5f9;
+      color: #2c3e50;
+    }
+    .score-area {
+      font-size: 1.15rem;
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      background: #e6f2fa;
+      padding: 0.5rem 1.4rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      color: #054a6b;
+    }
+    @media (max-width: 550px) {
+      .container {
+        padding: 1.8rem 1.2rem;
+      }
+      .sentence-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .blank-select {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>
+    🩺 Health & Body
+    <span>B1 · Gap‑fill</span>
+  </h1>
+  <div class="subtitle">
+    ⚡ Complete each sentence with the correct word from the drop‑down list.<br> 
+    Some words are extra — choose carefully!
+  </div>
+
+  <div class="exercise-grid" id="exerciseContainer">
+    <!-- Sentences will be generated by JavaScript to keep code clean -->
+  </div>
+
+  <div class="button-group">
+    <button class="btn btn-primary" id="checkBtn">✔ Check answers</button>
+    <button class="btn btn-reset" id="resetBtn">↺ Reset</button>
+    <div class="score-area" id="scoreDisplay">0 / 15</div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    // ---- FULL WORD LIST (exactly as provided) ----
+    const allWords = [
+      "heart", "stomach", "brain", "liver", "kidneys",
+      "lungs", "thyroid", "bladder", "intestines",
+      "an injury", "a cut", "a dislocation", "a fracture",
+      "a bump", "a bruise", "a burn",
+      "a fever", "flu", "a cold", "a stomachache",
+      "a backache", "an earache", "a headache",
+      "a toothache", "a sore throat", "airsickness"
+    ];
+
+    // ---- SENTENCES with correct answer (must match list exactly) ----
+    const sentences = [
+      { textBefore: "The", textAfter: "pumps blood all around your body.", correct: "heart" },
+      { textBefore: "Smoking can seriously damage your", textAfter: ".", correct: "lungs" },
+      { textBefore: "The", textAfter: "is like the body's control centre.", correct: "brain" },
+      { textBefore: "Drinking too much alcohol may destroy your", textAfter: ".", correct: "liver" },
+      { textBefore: "Water helps your", textAfter: "clean the blood.", correct: "kidneys" },
+      { textBefore: "She slipped and now has", textAfter: "on her leg.", correct: "a bruise" },
+      { textBefore: "I was chopping vegetables and got", textAfter: "on my finger.", correct: "a cut" },
+      { textBefore: "The X-ray showed that it was", textAfter: ", not a sprain.", correct: "a fracture" },
+      { textBefore: "Be careful with the oven – you could get", textAfter: ".", correct: "a burn" },
+      { textBefore: "His forehead is very hot; I think he has", textAfter: ".", correct: "a fever" },
+      { textBefore: "I'm staying home because I have", textAfter: ".", correct: "flu" },
+      { textBefore: "Too much noise gives me", textAfter: ".", correct: "a headache" },
+      { textBefore: "It hurts to swallow – I probably have", textAfter: ".", correct: "a sore throat" },
+      { textBefore: "During the flight, she suffered from", textAfter: ".", correct: "airsickness" },
+      { textBefore: "He couldn't play football because of", textAfter: "on his knee.", correct: "an injury" }
+    ];
+
+    const container = document.getElementById('exerciseContainer');
+    const checkBtn = document.getElementById('checkBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const scoreDisplay = document.getElementById('scoreDisplay');
+
+    // Build select options string once
+    function buildOptions(selectedWord = null) {
+      return allWords.map(word => {
+        const selectedAttr = (word === selectedWord) ? ' selected' : '';
+        return `<option value="${word}"${selectedAttr}>${word}</option>`;
+      }).join('');
+    }
+
+    // Render all sentences
+    function renderExercise() {
+      container.innerHTML = '';
+      sentences.forEach((s, index) => {
+        const card = document.createElement('div');
+        card.className = 'sentence-card';
+
+        const sentenceWrapper = document.createElement('div');
+        sentenceWrapper.className = 'sentence-text';
+
+        // Text before blank
+        if (s.textBefore) {
+          const beforeSpan = document.createElement('span');
+          beforeSpan.textContent = s.textBefore + ' ';
+          sentenceWrapper.appendChild(beforeSpan);
+        }
+
+        // Blank with select
+        const blankSpan = document.createElement('span');
+        blankSpan.className = 'blank-select';
+        const select = document.createElement('select');
+        select.setAttribute('data-index', index);
+        select.innerHTML = '<option value="">— Select —</option>' + buildOptions();
+        blankSpan.appendChild(select);
+        sentenceWrapper.appendChild(blankSpan);
+
+        // Text after blank
+        if (s.textAfter) {
+          const afterSpan = document.createElement('span');
+          afterSpan.textContent = ' ' + s.textAfter;
+          sentenceWrapper.appendChild(afterSpan);
+        }
+
+        card.appendChild(sentenceWrapper);
+        container.appendChild(card);
+      });
+    }
+
+    // Clear all styling classes from selects
+    function clearSelectStyles() {
+      document.querySelectorAll('#exerciseContainer select').forEach(select => {
+        select.classList.remove('correct', 'incorrect');
+      });
+    }
+
+    // Check answers and update score
+    function checkAnswers() {
+      clearSelectStyles();
+      let correctCount = 0;
+      const selects = document.querySelectorAll('#exerciseContainer select');
+
+      selects.forEach(select => {
+        const index = parseInt(select.getAttribute('data-index'), 10);
+        const userAnswer = select.value.trim();
+        const correctAnswer = sentences[index].correct;
+
+        if (userAnswer === correctAnswer) {
+          select.classList.add('correct');
+          correctCount++;
+        } else if (userAnswer === '') {
+          // leave unmarked but counted as incorrect
+          select.classList.add('incorrect');
+        } else {
+          select.classList.add('incorrect');
+        }
+      });
+
+      scoreDisplay.textContent = `${correctCount} / ${sentences.length}`;
+    }
+
+    // Reset all selects to default and remove styles
+    function resetExercise() {
+      document.querySelectorAll('#exerciseContainer select').forEach(select => {
+        select.value = '';
+        select.classList.remove('correct', 'incorrect');
+      });
+      scoreDisplay.textContent = `0 / ${sentences.length}`;
+    }
+
+    // Initialize
+    renderExercise();
+    scoreDisplay.textContent = `0 / ${sentences.length}`;
+
+    // Event listeners
+    checkBtn.addEventListener('click', checkAnswers);
+    resetBtn.addEventListener('click', resetExercise);
+
+    // Optional: remove styling when user changes selection
+    container.addEventListener('change', (e) => {
+      if (e.target.tagName === 'SELECT') {
+        e.target.classList.remove('correct', 'incorrect');
+      }
+    });
+
+  })();
+</script>
+</body>
+</html>
